@@ -1,0 +1,133 @@
+@import "reset";
+
+@import "mixin";
+@import "utility";
+
+
+header{
+  transition: 1s;
+}
+
+
+.wrapper {
+  display: flex;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  .left-box {
+    background-color: $accent;
+
+    h1 {
+      font-size: 6vw;
+      color: white;
+    }
+    span {
+      align-self: flex-start;
+      color: white;
+    }
+    p {
+      font-size:2vw;
+      color: white;
+      line-height: 1.6rem;
+      &::first-line {
+        font-weight: 800;
+      }
+    }
+  }
+  .right-box {
+    background-color: $primary;
+    overflow: hidden;
+  }
+  @media (max-width: 576px) {
+    flex-direction: column;
+    .left-box {
+      @include height-width(100%, 50%);
+    }
+    .right-box {
+      @include height-width(100%, 50%);
+    }
+    .hire {
+      display: none;
+    }
+  }
+}
+.hire {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%) rotate(-35deg);
+  font-size: 1.75rem;
+  text-align: center;
+  z-index: 5;
+}
+
+@media (max-width: 576px) {
+  .sm-img {
+    height: 60%;
+    margin-top: auto;
+  }
+}
+.black-box {
+  background-color: $dark;
+  height: 20vh;
+  overflow: hidden;
+  width: 100%;
+  img {
+    height: 6rem;
+  }
+}
+.lead{
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.lead+p{  
+  font-size: 1.25rem;
+  flex-basis: 70%;
+}
+.card-group{
+  gap: 1rem;
+  .card{
+    background-color: white;
+    flex-basis: 33%;
+    .card-body{
+      .card-heading{
+        font-size: 2rem;
+        text-transform: uppercase;
+        border-left: 10px solid $primary;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.card-heading+p{
+  font-size: 1.2rem;
+  line-height: 1.25rem;
+  
+}
+.panel-group{
+  background-color: white;
+  gap: 2rem;
+  .panel{
+    flex-basis: 50%;
+    img{
+      max-width: 100%;
+    }
+    p{
+      font-size: 1.5rem;
+      font-weight: 700;
+      ~ span{
+        font-size: 1.2rem;
+      }
+      & + span{
+        margin-right: 2rem;
+      }
+      & ~ span:last-child{
+        margin-left: 2rem ;
+      }
+    }
+  }
+}

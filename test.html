@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* overflow: ; */
+        }
+
+        .video {
+            transform: rotate(70deg);
+            width: 0px;
+            /* width: 560px; */
+            height: 0px;
+            /* height: 315px; */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transition: transform 0.8s;
+            /* transform: translate(-50%, -50%);
+            transform: skewX(20deg); */
+        }
+
+        /* transform: translate(-50%, -50%); */
+
+        .main {
+            /* background-color: red; */
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            /* font-family: ; */
+        }
+
+        .fix {
+            position: fixed;
+
+        }
+
+        span {
+            font-size: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main fix">
+        <span>A</span>
+    </div>
+
+    <iframe class="video" src="https://www.youtube.com/embed/pCWH5OW9lDo" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    <div class="dd" style="height: 2000px;"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.to("span",
+            {
+                scale: 100,
+                duration: 10,
+                scrollTrigger: {
+                    trigger: ".dd",
+                    markers: true,
+                    start: "40% 20%",
+                    end: "bottom bottom",
+                    // play pause complete reset reverse resume none
+                    toggleActions: "play pause reverse reset",
+                    scrub: true,
+                    // pin: "span"
+
+                }
+            }
+        )
+        gsap.to(".video",
+            {
+                // scale: 35,
+                height: 315,
+                width: 400,
+                rotation: 0,
+                // transformOrigin: 'right top',
+                // skewType: "simple",
+                // skewX: 0,
+                duration: 10,
+                scrollTrigger: {
+                    trigger: ".dd",
+                    markers: true,
+                    start: "42% 20%",
+                    end: "bottom bottom",
+                    // play pause complete reset reverse resume none
+                    toggleActions: "play pause reverse reset",
+                    scrub: true,
+                    // transformOrigin: 'right top',
+                    // skewType: "simple",
+                    // skewX: 0
+                    // pin: "span"
+
+                }
+            }
+        )
+    </script>
+
+</body>
+
+</html>
